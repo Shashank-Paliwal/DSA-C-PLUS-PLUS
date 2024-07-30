@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        
+        int mini = INT_MAX;
+        
+        for(int i=0; i<nums.size(); i++){
+            mini = min(nums[i],nums[i+1]);      // Find minimum element in the array
+        }
+        int k = 0;
+        for(int i=0; i<nums.size(); i++){
+            if(nums[i] == mini)                 // Find the index of the minimum element
+                k = i;
+                break;
+        }
+        vector<int>ans;
+        for(int i = k; i<nums.size(); i++){
+            ans.push_back(nums[i]);    // start from the smallest element so that 
+        }                               // the new array is a sorted array
+
+        for(int i = 0; i<k; i++){
+            ans.push_back(nums[i]);     // same step
+        }
+
+        for(int i=0; i<nums.size(); i++){
+            if(nums[i] == target)               // check if target is available and return its index
+                return i;
+        }
+        return -1;
+    }
+};
